@@ -6,13 +6,14 @@
 	<string name="removetable">Remover tabla</string>
 	<string name="removetable">Remover tablas</string>
 	<string name="aligntables">Alinear tablas</string>
+	<string name="layouttables">Layout tables</string>
 	<string name="cleartables">Limpiar tablas</string>
 	<string name="confirmall">Realmente borrar todas las tablas</string>
 	<string name="newtable">Nueva tabla</string>
 	<string name="addpending">Posicionar tabla</string>
 	<string name="tablenamelabel">Nombre</string>
 	<string name="tablecommentlabel">Comentario</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Agregar campo</string>
 	<string name="editrow">Editar campo</string>
@@ -38,7 +39,7 @@
 	<string name="ai">Auto incremento</string>
 	<string name="comment">Editar comentario</string>
 	<string name="commenttext">Entrar comentario para este campo</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">Aceptar</string>
 	<string name="windowcancel">Cancelar</string>
@@ -46,7 +47,7 @@
 	<string name="options">Opciones</string>
 	<string name="language">Lenguaje</string>
 	<string name="db">Base de datos para nuevos dise&#241;os</string>
-	<string name="optionsnotice">Algunas opciones son aplicadas solo despúes de recargar totalmente la pagina. Las cookies deben estar 
+	<string name="optionsnotice">Algunas opciones son aplicadas solo despúes de recargar totalmente la pagina. Las cookies deben estar
 habilitadas para opciones de trabajo.</string>
 	<string name="snap">Tabla acceso remoto</string>
 	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar acceso remoto</string>
@@ -54,8 +55,8 @@ habilitadas para opciones de trabajo.</string>
 	<string name="optionpatternnotice">%T = tabla primaria, %R = llave primaria, %t = tabla for&#225;nea</string>
 	<string name="hide">Esconder conectores en la tabla al arrastrar?</string>
 	<string name="vector">Dibujar conectores suave (si son soportados por el navegador)?</string>
-	
-	
+
+
 	<!-- keys -->
 	<string name="tablekeys">Llaves</string>
 	<string name="keyslistlabel">Llaves en la tabla "%s"</string>
@@ -66,7 +67,7 @@ habilitadas para opciones de trabajo.</string>
 	<string name="keyedit">Editar llave</string>
 	<string name="keyadd">Agregar llave</string>
 	<string name="keyremove">Remover llave</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Guardar / Cargar</string>
 	<string name="empty">Favor de pegar el XML dentro del &#225;rea de texto siguiente e intentar nuevamente.</string>
@@ -80,6 +81,8 @@ habilitadas para opciones de trabajo.</string>
 	<string name="serversave">Guardar</string>
 	<string name="serverload">Cargar</string>
 	<string name="serverlist">Lista de articulos</string>
+	<string name="diffsql">Diff SQL</string>
+	<string name="applydiff">Apply Diff</string>
 	<string name="serverimport">Importar desde BD</string>
 	<string name="serverloadprompt">Entrar palabra bajo la cual tu dise&#241;o fue guardado:</string>
 	<string name="serversaveprompt">Entrar palabra bajo la cual tu dise&#241;o va a ser guardado:</string>
@@ -90,9 +93,9 @@ habilitadas para opciones de trabajo.</string>
 	<string name="http500">Error Interno del Servidor</string>
 	<string name="http501">No Implementado</string>
 	<string name="http503">Servicio No Disponible</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML error</string>
 	<string name="docs">Documentación</string>
-	
+
 </locale>
