@@ -3,7 +3,7 @@ var CONFIG = {
 	DEFAULT_DB: "mysql",
 
 	AVAILABLE_LOCALES: ["ar", "cs", "de", "el", "en", "eo", "es", "fr", "hu", "it", "ja", "nl", "pl", "pt_BR", "ro", "ru", "sv", "zh"],
-	DEFAULT_LOCALE: "en",
+	DEFAULT_LOCALE: "es",
 	
 	AVAILABLE_BACKENDS: ["php-mysql", "php-blank", "php-file", "php-sqlite", "php-mysql+file", "php-postgresql", "php-pdo", "perl-file", "php-cubrid", "asp-file"],
 	DEFAULT_BACKEND: ["php-mysql"],

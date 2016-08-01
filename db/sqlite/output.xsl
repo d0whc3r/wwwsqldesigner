@@ -5,7 +5,7 @@
 
 <!-- tables -->
 	<xsl:for-each select="table">
-		<xsl:text>CREATE TABLE '</xsl:text>
+		<xsl:text>CREATE TABLE IF NOT EXISTS '</xsl:text>
 		<xsl:value-of select="@name" />
 		<xsl:text>' (
 </xsl:text>
@@ -17,7 +17,7 @@
 			<xsl:value-of select="datatype" />
 			
 			<xsl:if test="@null = 0">
-				<xsl:text> NOT NULL </xsl:text>
+				<xsl:text> NOT NULL</xsl:text>
 			</xsl:if> 
 			
 
