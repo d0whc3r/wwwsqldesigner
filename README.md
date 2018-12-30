@@ -6,6 +6,14 @@ WWW SQL Designer allows users to create database designs, which can be saved/loa
 
 [[Original project - https://github.com/ondras/wwwsqldesigner](https://github.com/ondras/wwwsqldesigner)]
 
+# Quick Start
+
+## Local Installation:
+
+1. `npm install http-server -g`
+2. Run `http-server` in the root of this repo to start a simple http server
+3. Visit http://127.0.0.1:8080
+
 # Docker build
 
 Image in: [https://hub.docker.com/r/d0whc3r/wwwsqldesigner/](https://hub.docker.com/r/d0whc3r/wwwsqldesigner/)
