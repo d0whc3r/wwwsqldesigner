@@ -61,17 +61,16 @@
                     <xsl:value-of select="default" />
                     <xsl:text></xsl:text>
                 </xsl:if>
-                </xsl:if>
+			</xsl:if>
 
-                <xsl:if test="comment">
-                    <xsl:text>/* </xsl:text>
+			<xsl:if test="comment">
+				<xsl:text>/* </xsl:text>
+                <xsl:value-of select="comment"/>
+                <xsl:text> */</xsl:text>
+			</xsl:if>
 
-                    <xsl:value-of select="comment"/>
-                    <xsl:text> */</xsl:text>
-                </xsl:if>
-
-                <xsl:if test="not (position()=last())">
-                    <xsl:text>,
+			<xsl:if test="not (position()=last())">
+				<xsl:text>,
 </xsl:text>
 			</xsl:if> 
 		</xsl:for-each>
@@ -108,8 +107,44 @@
 			
 		</xsl:for-each>
 
+		<xsl:if test="comment">
+            <xsl:text>COMMENT ON TABLE "</xsl:text>
+            <xsl:value-of select="@name"/>
+            <xsl:text>" IS '</xsl:text>
+            <xsl:call-template name="replace-substring">
+				<xsl:with-param name="value" select="comment" />
+				<xsl:with-param name="from" select='"&apos;"' />
+				<xsl:with-param name="to" select='"&apos;&apos;"' />
+			</xsl:call-template>
+            <xsl:text>';
+</xsl:text>
+		</xsl:if>
+		
+<!-- column comments -->
+		<xsl:for-each select="row">
+			<xsl:if test="comment">
+                <xsl:text>COMMENT ON COLUMN "</xsl:text>
+                <xsl:value-of select="../@name"/>
+                <xsl:text>"."</xsl:text>
+                <xsl:value-of select="@name"/>
+                <xsl:text>" IS '</xsl:text>
+				<xsl:call-template name="replace-substring">
+					<xsl:with-param name="value" select="comment" />
+					<xsl:with-param name="from" select='"&apos;"' />
+					<xsl:with-param name="to" select='"&apos;&apos;"' />
+				</xsl:call-template>
+                <xsl:text>';
+</xsl:text>
+			</xsl:if>
+		</xsl:for-each>
 
-<!-- fk -->
+		<xsl:text>
+</xsl:text>
+	</xsl:for-each>
+
+<!-- tables -->
+<xsl:for-each select="table">
+	<!-- fk -->
 	<xsl:for-each select="row">
 		<xsl:for-each select="relation">
 			<xsl:text>ALTER TABLE </xsl:text>
@@ -129,92 +164,7 @@
 </xsl:text>
 		</xsl:for-each>
 	</xsl:for-each>
-
-
-            <xsl:if test="comment">
-                <xsl:text>COMMENT ON TABLE "</xsl:text>
-            <xsl:value-of select="@name"/>
-            <xsl:text>" IS '</xsl:text>
-            <xsl:call-template name="replace-substring">
-				<xsl:with-param name="value" select="comment" />
-				<xsl:with-param name="from" select='"&apos;"' />
-				<xsl:with-param name="to" select='"&apos;&apos;"' />
-			</xsl:call-template>
-            <xsl:text>';
-</xsl:text>
-            </xsl:if>
-
-            <!-- column comments -->
-            <xsl:for-each select="row">
-
-                <xsl:if test="comment">
-                    <xsl:text>COMMENT ON COLUMN "</xsl:text>
-                <xsl:value-of select="../@name"/>
-                <xsl:text>"."</xsl:text>
-                <xsl:value-of select="@name"/>
-                <xsl:text>" IS '</xsl:text>
-				<xsl:call-template name="replace-substring">
-					<xsl:with-param name="value" select="comment" />
-					<xsl:with-param name="from" select='"&apos;"' />
-					<xsl:with-param name="to" select='"&apos;&apos;"' />
-				</xsl:call-template>
-                <xsl:text>';
-</xsl:text>
-                </xsl:if>
-            </xsl:for-each>
-
-            <xsl:text>
-</xsl:text>
-	</xsl:for-each>
-
-        <!-- fk -->
-        <xsl:for-each select="table">
-
-            <xsl:for-each select="row">
-
-                <xsl:for-each select="relation">
-                    <xsl:text>ALTER TABLE ONLY "</xsl:text>
-                				<xsl:value-of select="../../@name" /><xsl:text>" </xsl:text>
-                        <xsl:if test="@name = ''">
-                          <xsl:text>ADD CONSTRAINT "</xsl:text><xsl:value-of select="../../@name" />
-                        </xsl:if>
-                				<xsl:text>ADD FOREIGN KEY ("</xsl:text>
-                				<xsl:value-of select="../@name" />
-                				<xsl:text>") REFERENCES "</xsl:text>
-                				<xsl:value-of select="@table" />
-                				<xsl:text>" ("</xsl:text>
-                				<xsl:value-of select="@row" />
-                				<xsl:text>");
-</xsl:text>
-
-                </xsl:for-each>
-
-            </xsl:for-each>
-
-
-                <xsl:for-each select="key">
-                  <xsl:if test="@type = 'INDEX'">
-
-                    <xsl:choose>
-
-                        <xsl:when test="@type = 'INDEX'">
-                            <xsl:text>CREATE INDEX "</xsl:text><xsl:value-of select="@name"/><xsl:text>" ON "</xsl:text>
-                        <xsl:value-of select="../@name"/>" <xsl:text>( </xsl:text>
-                        </xsl:when>
-                    </xsl:choose>
-
-                    <xsl:for-each select="part">
-                        <xsl:text>"</xsl:text><xsl:value-of select="." /><xsl:text>"</xsl:text>
-
-                        <xsl:if test="not (position() = last())">
-                            <xsl:text>, </xsl:text>
-                        </xsl:if>
-                    </xsl:for-each>
-                    <xsl:text>);
-</xsl:text>
-                  </xsl:if>
-                </xsl:for-each>
-        </xsl:for-each>
+</xsl:for-each>
 
 </xsl:template>
 </xsl:stylesheet>
